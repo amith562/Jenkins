@@ -5,21 +5,16 @@ services:
     image: jenkins/jenkins:lts
     container_name: jenkins
     privileged: true
-    user: root
     ports:
       - "8080:8080"
       - "50000:50000"
+    environment:
+      - JENKINS_OPTS="--prefix=/jenkins"
     volumes:
       # Bind mount for Jenkins home directory
-      - /jenkins-home:/var/jenkins_home
+      -  /jenkins-home:/var/jenkins_home
       # Docker socket to allow Jenkins to use Docker
       - /var/run/docker.sock:/var/run/docker.sock
       # Docker binary to allow Jenkins to use Docker
       - /usr/bin/docker:/usr/bin/docker
     restart: unless-stopped
-    networks:
-      - jenkins-network
-
-networks:
-  jenkins-network:
-    driver: bridge
