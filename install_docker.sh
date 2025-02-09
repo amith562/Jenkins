@@ -46,3 +46,13 @@ echo "Verifying Docker installation..."
 sudo docker --version
 
 echo "Docker installation is complete."
+
+# Docker-compose installation 
+echo "Installing Docker compose..."
+sudo apt-get install -y docker-compose
+
+# Verify docker-compose installation
+echo "Verifying docker-compose installation..."
+sudo docker-compose --version
+
+echo "docker-compose installation is complete."
